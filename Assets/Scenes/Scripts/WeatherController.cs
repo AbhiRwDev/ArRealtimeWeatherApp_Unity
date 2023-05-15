@@ -42,10 +42,13 @@ public class WeatherController : MonoBehaviour
     public Text windText;
     public Text humidityText;
     public Text pressureText;
+    public Image weatherImage;
     public int degree;
     private LocationInfo lastLocation;
     private string apiUrl;
     public float temperatureg;
+    public Sprite sunnyImage, cloudyImage, mistImage, rainyImage, snowyImage, thunderstormImage, defaultImage;
+
     IEnumerator Start()
     {
         // Ask for location permission
@@ -73,7 +76,6 @@ public class WeatherController : MonoBehaviour
 
         StartCoroutine(GetWeatherData());
     }
-
     IEnumerator GetWeatherData()
     {
         UnityWebRequest www = UnityWebRequest.Get(apiUrl);
@@ -94,23 +96,59 @@ public class WeatherController : MonoBehaviour
         string humidity = weatherData.current.humidity.ToString();
         string pressure = weatherData.current.pressure_mb.ToString();
         temperatureg = weatherData.current.temp_c;
-        locationText.text ="CITY:"+ location;
+        locationText.text = "CITY:" + location;
         if (degree == 0)
         {
             temperatureText.text = "TEMPERATURE:" + temperature + "°C";
         }
         else
         {
-            temperatureText.text = "TEMPERATURE:" + ((float.Parse(temperature)*1.8f)+32) + "°C";
+            temperatureText.text = "TEMPERATURE:" + ((float.Parse(temperature) * 1.8f) + 32) + "°C";
         }
-        weatherText.text ="WEATHER:"+ weather;
-        windText.text ="WIND SPEED:"+ wind + " kph";
-        humidityText.text ="Humidity:" + humidity + "%";
+        weatherText.text = "WEATHER:" + weather;
+        windText.text = "WIND SPEED:" + wind + " kph";
+        humidityText.text = "Humidity:" + humidity + "%";
         pressureText.text = "Pressure: " + pressure + " mb";
+
+        // Show the appropriate weather image
+        switch (weather.ToLower())
+        {
+            case "clear":
+            case "sunny":
+                weatherImage.sprite = sunnyImage;
+                break;
+            case "partly cloudy":
+            case "cloudy":
+                weatherImage.sprite = cloudyImage;
+                break;
+            case "mist":
+            case "fog":
+            case "haze":
+            case "smoke":
+                weatherImage.sprite = mistImage;
+                break;
+            case "rain":
+            case "moderate rain":
+            case "heavy rain":
+                weatherImage.sprite = rainyImage;
+                break;
+            case "snow":
+            case "light snow":
+            case "heavy snow":
+                weatherImage.sprite = snowyImage;
+                break;
+            case "thunderstorm":
+                weatherImage.sprite = thunderstormImage;
+                break;
+            default:
+                weatherImage.sprite = defaultImage;
+                break;
+        }
 
         // Stop location updates
         Input.location.Stop();
     }
+
     public void ConvertTemp()
     {
         if(degree==0)

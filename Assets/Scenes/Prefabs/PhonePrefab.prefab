@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.38467437, g: 0.9245283, b: 0.030526895, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -700,8 +700,16 @@ MonoBehaviour:
   windText: {fileID: 8704827542607271871}
   humidityText: {fileID: 8704827543273532813}
   pressureText: {fileID: 8704827543059451451}
+  weatherImage: {fileID: 2953250743852652970}
   degree: 0
   temperatureg: 0
+  sunnyImage: {fileID: 21300000, guid: 225d158b77b5e4a489e4e49191ca45b3, type: 3}
+  cloudyImage: {fileID: 21300000, guid: d39c7205ef3bb654a997fab440f47e9c, type: 3}
+  mistImage: {fileID: 21300000, guid: 5a150c65a156bc64cb0aa66bb1cc0630, type: 3}
+  rainyImage: {fileID: 21300000, guid: 32bf949f13a4f904d9e5f800e9a7ba4a, type: 3}
+  snowyImage: {fileID: 21300000, guid: 1840d8f6200bb864ea2ad98763e99d3d, type: 3}
+  thunderstormImage: {fileID: 21300000, guid: dbfe1aa34dd9c844897c343696032372, type: 3}
+  defaultImage: {fileID: 21300000, guid: 225d158b77b5e4a489e4e49191ca45b3, type: 3}
 --- !u!1 &8704827543273532803
 GameObject:
   m_ObjectHideFlags: 0
